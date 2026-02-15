@@ -1,0 +1,267 @@
+/* HF5.css - Weight Verification Screen */
+.hf5 {
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+.hf5-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0C2E4D;
+  padding: 15px 20px;
+  height: 60px;
+}
+
+.hf5-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.hf5-menu-btn {
+  background: none;
+  border: none;
+  color: #ffefc8;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.hf5-header-bar {
+  display: flex;
+  align-items: center;
+  background-color: #ffefc8;
+  padding: 15px 20px;
+  gap: 15px;
+}
+
+.hf5-back-btn {
+  background: none;
+  border: none;
+  color: #0C2E4D;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.hf5-heading {
+  color: #0C2E4D;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Main Content */
+.hf5-content {
+  padding: 30px;
+  min-height: calc(100vh - 135px);
+}
+
+.verification-table-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.verification-table {
+  border: 2px solid #0C2E4D;
+  border-radius: 12px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1.5fr 1.5fr 1fr;
+  gap: 15px;
+  padding: 15px;
+  background-color: #0C2E4D;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.header-cell {
+  color: #ffefc8;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+
+.table-body {
+  max-height: calc(100vh - 380px);
+  overflow-y: auto;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 0.5fr 1.5fr 1.5fr 1fr;
+  gap: 15px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  background-color: #e9ecef;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.cell {
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-badge.pending {
+  background-color: #6c757d;
+  color: white;
+}
+
+.status-badge.matched {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-badge.unmatched {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Verification Summary */
+.verification-summary {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.verification-summary.matched {
+  background-color: #d4edda;
+  border: 2px solid #28a745;
+  color: #155724;
+}
+
+.verification-summary.unmatched {
+  background-color: #f8d7da;
+  border: 2px solid #dc3545;
+  color: #721c24;
+}
+
+.summary-icon {
+  font-size: 24px;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.action-btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.verify-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.verify-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.verify-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.rescan-btn {
+  background-color: #ffefc8;
+  color: #0C2E4D;
+  border: 2px solid #0C2E4D;
+}
+
+.rescan-btn:hover {
+  background-color: #0C2E4D;
+  color: #ffefc8;
+  transform: translateY(-2px);
+}
+
+.proceed-btn {
+  background-color: #0C2E4D;
+  color: #ffefc8;
+}
+
+.proceed-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(12, 46, 77, 0.3);
+}
+
+.proceed-btn:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+  transform: none;
+  opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-header,
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,26 @@
+/* HF1.css - Place Item in Basket Screen */
+.hf1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 60px);
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hf1:hover {
+  background-color: #f8f9fa;
+}
+
+.hf1-content {
+  text-align: center;
+  padding: 40px;
+}
+
+.hf1-text {
+  font-size: 32px;
+  font-weight: 600;
+  color: #0C2E4D;
+  margin: 0;
+}

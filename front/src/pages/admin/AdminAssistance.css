@@ -1,0 +1,98 @@
+.admin-assistance-container {
+  min-height: 100vh;
+  background-color: #f5f5dc;
+  padding-bottom: 80px;
+}
+
+.admin-assistance-top-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #003d5c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.admin-assistance-logo {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+}
+
+.admin-assistance-menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admin-assistance-yellow-bar {
+  width: 100%;
+  background-color: #ffefc8;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin-assistance-back-arrow {
+  font-size: 28px;
+  color: #003d5c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.admin-assistance-yellow-heading {
+  color: #003d5c;
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.admin-assistance-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.admin-assistance-content h2 {
+  text-align: center;
+  color: #003d5c;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.admin-assistance-card {
+  background-color: #fff;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.admin-assistance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.admin-assistance-card h3 {
+  color: #003d5c;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.admin-assistance-card p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.admin-assistance-bottom-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #003d5c;
+  position: fixed;
+  bottom: 0;
+}

@@ -1,0 +1,57 @@
+# Environment files (Security - Critical!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Test coverage
+.coverage
+.pytest_cache/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Cache files
+.cache/
+*.cache
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+node_modules
+.env
+dist
+build
+*.exe
