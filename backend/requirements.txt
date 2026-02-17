@@ -5,7 +5,8 @@ pymysql==1.1.1
 ultralytics==8.0.0
 python-dotenv==1.0.0
 opencv-python==4.8.1.78
-pyyaml==6.0
+pyyaml==6.1
 Pillow==10.0.0
 pyserial==3.5
 stripe==10.10.0
+gunicorn==21.2.0
