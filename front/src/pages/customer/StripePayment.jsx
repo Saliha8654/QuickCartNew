@@ -10,6 +10,7 @@ import {
 } from "@stripe/react-stripe-js";
 import "./StripePayment.css";
 import { IoMdArrowBack } from "react-icons/io";
+import { MdCheckCircle, MdLock, MdError } from "react-icons/md";
 import { FaCreditCard } from "react-icons/fa";
 import axios from "axios";
 
@@ -94,39 +95,63 @@ function CheckoutForm({ items, total, onPaymentSuccess }) {
 
   return (
     <form onSubmit={handleSubmit} className="stripe-payment-form">
-      <div className="order-summary-stripe">
-        <h3>Order Summary</h3>
-        <div className="order-id-stripe">Order ID: {orderId}</div>
-        <div className="order-amount-stripe">Amount: PKR {total.toFixed(2)}</div>
+      <div className="form-section order-summary-card">
+        <div className="section-header">
+          <h3 className="section-title">Order Summary</h3>
+        </div>
         
-        <div className="items-summary-stripe">
-          <h4>Items:</h4>
-          {items.slice(0, 3).map((item, index) => (
-            <div key={index} className="item-row-stripe">
-              <span>{item.name}</span>
-              <span>x{item.quantity}</span>
-              <span>PKR {(item.price * item.quantity).toFixed(2)}</span>
-            </div>
-          ))}
-          {items.length > 3 && (
-            <div className="more-items-stripe">+ {items.length - 3} more items</div>
-          )}
+        <div className="order-id-box">
+          <span className="order-id-label">Order ID</span>
+          <span className="order-id-value">{orderId}</span>
+        </div>
+        
+        <div className="order-amount-display">
+          <span className="amount-label">Total Amount</span>
+          <span className="amount-value">PKR {total.toFixed(2)}</span>
+        </div>
+        
+        <div className="items-summary-list">
+          <h4 className="items-title">Items ({items.length})</h4>
+          <div className="items-container">
+            {items.slice(0, 3).map((item, index) => (
+              <div key={index} className="item-row">
+                <div className="item-info">
+                  <span className="item-name">{item.name}</span>
+                  <span className="item-qty">x{item.quantity}</span>
+                </div>
+                <span className="item-price">PKR {(item.price * item.quantity).toFixed(2)}</span>
+              </div>
+            ))}
+            {items.length > 3 && (
+              <div className="more-items-note">+ {items.length - 3} more items</div>
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="card-element-container">
-        <h3>Card Information</h3>
-        <CardElement options={cardElementOptions} />
+      <div className="form-section card-info-section">
+        <div className="section-header">
+          <MdLock className="section-icon" />
+          <h3 className="section-title">Card Information</h3>
+        </div>
+        <div className="card-input-wrapper">
+          <CardElement className="stripe-card-element" options={cardElementOptions} />
+        </div>
       </div>
 
-      {error && <div className="error-message">{error}</div>}
+      {error && (
+        <div className="error-alert">
+          <MdError className="error-icon" />
+          <span className="error-text">{error}</span>
+        </div>
+      )}
 
       <button 
         type="submit" 
         disabled={!stripe || loading}
         className="pay-button"
       >
-        {loading ? "Processing..." : `Pay PKR ${total.toFixed(2)}`}
+        {loading ? "Processing Payment..." : `Pay PKR ${total.toFixed(2)}`}
       </button>
     </form>
   );
@@ -169,24 +194,39 @@ function StripePayment() {
   if (paymentStatus === "success") {
     return (
       <div className="stripe-payment-success">
-        <div className="success-header">
-          <button className="back-btn" onClick={handleBack}>
-            <IoMdArrowBack />
-          </button>
-          <h2>Payment Successful</h2>
+        <div className="success-navbar">
+          <div className="navbar-content">
+            <button className="navbar-back-btn" onClick={handleBack}>
+              <IoMdArrowBack />
+            </button>
+            <h1 className="navbar-title">quickcart</h1>
+            <div style={{ width: '40px' }}></div>
+          </div>
         </div>
         
         <div className="success-content">
-          <div className="success-icon">✅</div>
-          <h3>Thank You!</h3>
-          <p>Your payment has been processed successfully.</p>
-          <div className="order-details-success">
-            <p><strong>Order ID:</strong> ORD-{Date.now()}-{Math.floor(Math.random() * 1000)}</p>
-            <p><strong>Amount Paid:</strong> PKR {total.toFixed(2)}</p>
+          <div className="success-card">
+            <div className="success-icon-large">
+              <MdCheckCircle />
+            </div>
+            <h2 className="success-title">Payment Successful!</h2>
+            <p className="success-message">Your payment has been processed successfully</p>
+            
+            <div className="success-details">
+              <div className="detail-row">
+                <span className="detail-label">Order ID</span>
+                <span className="detail-value">ORD-{Date.now()}-{Math.floor(Math.random() * 1000)}</span>
+              </div>
+              <div className="detail-row">
+                <span className="detail-label">Amount Paid</span>
+                <span className="detail-value-amount">PKR {total.toFixed(2)}</span>
+              </div>
+            </div>
+            
+            <button className="proceed-btn" onClick={handleProceed}>
+              View Receipt
+            </button>
           </div>
-          <button className="proceed-btn" onClick={handleProceed}>
-            View Receipt
-          </button>
         </div>
       </div>
     );
@@ -194,37 +234,52 @@ function StripePayment() {
 
   return (
     <div className="stripe-payment">
-      {/* Header */}
-      <div className="stripe-header-bar">
-        <button className="stripe-back-btn" onClick={handleBack}>
-          <IoMdArrowBack />
-        </button>
-        <h2 className="stripe-heading">
-          <FaCreditCard style={{ marginRight: "10px" }} />
-          Credit Card Payment
-        </h2>
+      {/* Navigation Bar */}
+      <div className="stripe-navbar">
+        <div className="navbar-content">
+          <button className="navbar-back-btn" onClick={handleBack}>
+            <IoMdArrowBack />
+          </button>
+          <h1 className="navbar-title">quickcart</h1>
+          <div style={{ width: '40px' }}></div>
+        </div>
+      </div>
+
+      {/* Header Section */}
+      <div className="stripe-page-header">
+        <div className="header-icon">
+          <MdLock />
+        </div>
+        <h2 className="page-title">Secure Payment</h2>
+        <p className="page-subtitle">Complete your payment safely</p>
       </div>
 
       {/* Main Content */}
       <div className="stripe-content">
-        <Elements stripe={stripePromise}>
-          <CheckoutForm 
-            items={items} 
-            total={total} 
-            onPaymentSuccess={handlePaymentSuccess}
-          />
-        </Elements>
+        <div className="payment-form-wrapper">
+          <Elements stripe={stripePromise}>
+            <CheckoutForm 
+              items={items} 
+              total={total} 
+              onPaymentSuccess={handlePaymentSuccess}
+            />
+          </Elements>
 
-        {paymentStatus === "failed" && (
-          <div className="payment-failed-stripe">
-            <div className="failed-icon">❌</div>
-            <h3>Payment Failed</h3>
-            <p>Something went wrong with your payment.</p>
-            <button className="retry-btn-stripe" onClick={handleRetry}>
-              Try Again
-            </button>
-          </div>
-        )}
+          {paymentStatus === "failed" && (
+            <div className="payment-failed-alert">
+              <div className="failed-card">
+                <div className="failed-icon">
+                  <MdError />
+                </div>
+                <h3>Payment Failed</h3>
+                <p>Something went wrong with your payment. Please try again.</p>
+                <button className="retry-btn" onClick={handleRetry}>
+                  Try Again
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
