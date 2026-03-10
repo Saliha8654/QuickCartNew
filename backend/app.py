@@ -13,6 +13,7 @@ from routes.admin_auth import admin_auth_bp
 from routes.admin_dashboard import admin_dashboard_bp
 from routes.payment import payment_bp
 from detection import load_model
+
 def create_app():
     app = Flask(__name__)
     CORS(app)
@@ -26,12 +27,21 @@ def create_app():
     app.register_blueprint(admin_dashboard_bp, url_prefix="/api")
     app.register_blueprint(payment_bp, url_prefix="/api")
     return app
+
 if __name__ == "__main__":
     print("🚀 Starting QuickCart backend server...")
     
-    # ✅ Preload detection model (optional but improves first request time)
+    # ✅ Preload detection model
     print("🔍 Loading AI detection model at startup...")
     load_model()
 
+    # ✅ Initialize weight sensor at startup
+    try:
+        from routes.weight_sensor import init_serial_connection
+        print("⚖️ Initializing weight sensor...")
+        init_serial_connection()
+    except Exception as e:
+        print(f"⚠️ Could not initialize weight sensor at startup: {e}")
+
     app = create_app()
-    app.run(debug=config.DEBUG, port=config.APP_PORT)
+    app.run(debug=config.DEBUG, host='0.0.0.0', port=config.APP_PORT)
