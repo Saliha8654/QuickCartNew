@@ -25,7 +25,7 @@ function HF5() {
     try {
       const response = await axios.get(`${API_URL}/cart`);
       const cartItems = response.data.items || [];
-      
+
       // Map cart items to include expected weight
       const itemsWithWeights = cartItems.map(item => ({
         id: item.id,
@@ -35,7 +35,7 @@ function HF5() {
         detectedWeight: 0, // Will be set during verification
         status: "Pending"
       }));
-      
+
       setItems(itemsWithWeights);
     } catch (error) {
       console.error("Error fetching cart items:", error);
@@ -48,34 +48,43 @@ function HF5() {
       // Get actual weight from weight sensor
       const weightResponse = await axios.get(`${API_URL}/weight_sensor/read`);
       const actualWeightValue = weightResponse.data.weight_g || 0;
+      console.log(`[Weight Sensor] Actual Reading: ${actualWeightValue}g`);
+
+      if (actualWeightValue === -999) {
+        alert("Scale Error: Your Arduino scale needs to be calibrated. Please run the calibration command 'c500' in the Arduino Serial Monitor or a test script.");
+        setActualWeight(0);
+        return;
+      }
+
       setActualWeight(actualWeightValue);
-      
+
       // Calculate total expected weight
       const totalExpected = items.reduce((sum, item) => sum + item.expectedWeight, 0);
-      
+      console.log(`[Weight Sensor] Total Expected: ${totalExpected}g`);
+
       // Update items with detected weight and status
       const updatedItems = items.map(item => {
         // For simplicity, distribute the actual weight proportionally
         const proportion = item.expectedWeight / totalExpected;
         const detectedWeight = actualWeightValue * proportion;
-        
-        // Check if weight matches (with 5% tolerance)
-        const tolerance = item.expectedWeight * 0.05;
+
+        // Check if weight matches (with 10% tolerance for lightweight items)
+        const tolerance = item.expectedWeight * 0.10;
         const matched = Math.abs(detectedWeight - item.expectedWeight) <= tolerance;
-        
+
         return {
           ...item,
           detectedWeight: detectedWeight,
           status: matched ? "Matched" : "Unmatched"
         };
       });
-      
+
       setItems(updatedItems);
-      
+
       // Overall verification status
       const allMatched = updatedItems.every(item => item.status === "Matched");
       setVerificationStatus(allMatched ? 'matched' : 'unmatched');
-      
+
     } catch (error) {
       console.error("Error verifying weight:", error);
       alert("Failed to verify weight. Please ensure weight sensor is connected.");
@@ -164,8 +173,8 @@ function HF5() {
               )}
 
               <div className="action-buttons">
-                <button 
-                  className="action-btn verify-btn" 
+                <button
+                  className="action-btn verify-btn"
                   onClick={verifyWeight}
                   disabled={isVerifying}
                 >
@@ -174,8 +183,8 @@ function HF5() {
                 <button className="action-btn rescan-btn" onClick={handleRescanItems}>
                   Rescan Items
                 </button>
-                <button 
-                  className="action-btn proceed-btn" 
+                <button
+                  className="action-btn proceed-btn"
                   onClick={handleProceedToCheckout}
                 >
                   Proceed to Checkout

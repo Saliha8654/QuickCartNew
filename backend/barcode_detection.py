@@ -82,27 +82,19 @@ def detect_barcodes(frame) -> List[Dict[str, Any]]:
         barcodes: List[Dict[str, Any]] = []
 
         try:
-            # pyzxing API: Different versions use different methods
-            # Try decode first (single barcode), then decode_array (multiple barcodes)
-            if hasattr(_ZXING_READER, 'decode_array'):
-                results = _ZXING_READER.decode_array(temp_path) or []
-            elif hasattr(_ZXING_READER, 'decode'):
-                # Single barcode mode - wrap in list
-                result = _ZXING_READER.decode(temp_path)
-                # If result is a dict, wrap in list; if it's already a list, use it
-                if isinstance(result, dict):
-                    results = [result] if result else []
-                elif isinstance(result, list):
-                    results = result
-                else:
-                    results = []
-            else:
-                # Fallback to OpenCV
+            # Most pyzxing versions handle file paths correctly with .decode()
+            # and may return a list of dictionaries if multiple barcodes are found.
+            results = _ZXING_READER.decode(temp_path)
+            
+            # Normalize results to a list
+            if results is None:
+                results = []
+            elif isinstance(results, dict):
+                results = [results]
+            elif not isinstance(results, list):
                 results = []
         except Exception as zxing_error:
             print(f"[ERROR] pyzxing decode failed: {zxing_error}")
-            import traceback
-            traceback.print_exc()
             results = []
 
             for r in results:

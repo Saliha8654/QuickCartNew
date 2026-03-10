@@ -56,14 +56,14 @@ BARCODE_PRODUCTS = [
         "name": "Lifebuoy Total Protect Soap",
         "barcode": "8961014264630",
         "price": 40.0,
-        "expected_weight_g": 125.0,
+        "expected_weight_g": 123.0,
         "inventory": 50
     },
     {
         "name": "Lipton Yellow Label Tea",
         "barcode": "8720608622924",
         "price": 250.0,
-        "expected_weight_g": 238.0,
+        "expected_weight_g": 94.0,
         "inventory": 50
     },
     {
@@ -77,7 +77,7 @@ BARCODE_PRODUCTS = [
         "name": "Safeguard Bar Soap Pure White",
         "barcode": "8001841420677",
         "price": 60.0,
-        "expected_weight_g": 100.0,
+        "expected_weight_g": 122.0,
         "inventory": 50
     },
     {

@@ -41,23 +41,23 @@ function HF4() {
   const updateQuantity = async (cartItemId, change) => {
     const item = items.find(i => i.id === cartItemId);
     if (!item) return;
-    
+
     const newQuantity = item.quantity + change;
-    
+
     if (newQuantity < 1) {
       removeItem(cartItemId);
       return;
     }
-    
+
     try {
       await axios.patch(`${API_URL}/cart/${cartItemId}`, {
         quantity: newQuantity
       });
-      
+
       // Update local state
-      setItems(prevItems => 
-        prevItems.map(i => 
-          i.id === cartItemId 
+      setItems(prevItems =>
+        prevItems.map(i =>
+          i.id === cartItemId
             ? { ...i, quantity: newQuantity }
             : i
         )

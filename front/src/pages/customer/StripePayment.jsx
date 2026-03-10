@@ -33,7 +33,7 @@ function CheckoutForm({ items, total, onPaymentSuccess }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     if (!stripe || !elements) {
       return;
     }
@@ -98,7 +98,7 @@ function CheckoutForm({ items, total, onPaymentSuccess }) {
         <h3>Order Summary</h3>
         <div className="order-id-stripe">Order ID: {orderId}</div>
         <div className="order-amount-stripe">Amount: PKR {total.toFixed(2)}</div>
-        
+
         <div className="items-summary-stripe">
           <h4>Items:</h4>
           {items.slice(0, 3).map((item, index) => (
@@ -121,8 +121,8 @@ function CheckoutForm({ items, total, onPaymentSuccess }) {
 
       {error && <div className="error-message">{error}</div>}
 
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         disabled={!stripe || loading}
         className="pay-button"
       >
@@ -136,14 +136,14 @@ function StripePayment() {
   const navigate = useNavigate();
   const location = useLocation();
   const { items, total } = location.state || { items: [], total: 0 };
-  
+
   const [paymentStatus, setPaymentStatus] = useState("pending"); // pending, success, failed
 
   const handlePaymentSuccess = async (orderId, amount) => {
     setPaymentStatus("success");
     // In a real app, you might want to save the order ID and amount
     console.log("Payment successful!", { orderId, amount });
-    
+
     // Clear the cart from the database after successful payment
     try {
       await axios.delete(`${API_URL}/cart`);
@@ -158,7 +158,14 @@ function StripePayment() {
   };
 
   const handleProceed = () => {
-    navigate("/receipt", { state: { items, total, paymentMethod: "Credit Card" } });
+    navigate("/receipt", {
+      state: {
+        items,
+        total: total,
+        paymentMethod: "Credit Card",
+        orderId: `ORD-${Date.now()}`
+      }
+    });
   };
 
   const handleRetry = () => {
@@ -175,7 +182,7 @@ function StripePayment() {
           </button>
           <h2>Payment Successful</h2>
         </div>
-        
+
         <div className="success-content">
           <div className="success-icon">✅</div>
           <h3>Thank You!</h3>
@@ -208,9 +215,9 @@ function StripePayment() {
       {/* Main Content */}
       <div className="stripe-content">
         <Elements stripe={stripePromise}>
-          <CheckoutForm 
-            items={items} 
-            total={total} 
+          <CheckoutForm
+            items={items}
+            total={total}
             onPaymentSuccess={handlePaymentSuccess}
           />
         </Elements>

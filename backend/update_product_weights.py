@@ -9,9 +9,9 @@ def update_weights():
         "Tapal Danedar": 85.0,
         "Lifebuoy": 123.0,
         "Colgate": 20.0,
-        "Lipton Yellow Label": 85.0,
+        "Lipton Yellow Label": 94.0,
         "Chocolate Chip Cookies": 36.0,
-        "Safeguard Soap": 125.0,
+        "Safeguard Soap": 122.0,
         "Oreo": 38.6,
         "Kurkure": 34.0,
     }
