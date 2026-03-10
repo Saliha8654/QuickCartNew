@@ -42,21 +42,9 @@ function Admin3() {
 
   return (
     <div className="admin3-container">
-      {/* Top Blue Bar */}
-      <div className="admin3-top-bar">
-        <div className="admin3-menu-icon">
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-        </div>
-      </div>
-
-      {/* Heading */}
-      <h2 className="admin3-page-heading">Sign up to Create Admin Account</h2>
-
       {/* Signup Form */}
       <div className="admin3-form-container">
-        <h3 className="admin3-form-heading">Sign up</h3>
+        <h3 className="admin3-form-heading">Create Admin Account</h3>
 
         <div className="admin3-form-group">
           <label className="admin3-label">Email:</label>
@@ -99,7 +87,7 @@ function Admin3() {
             className="admin3-link"
             onClick={() => navigate('/admin/login')}
           >
-            Login
+            Log in here
           </span>
         </p>
 
@@ -115,13 +103,10 @@ function Admin3() {
             onClick={handleSignup}
             disabled={loading}
           >
-            {loading ? "Signing up..." : "Sign up"}
+            {loading ? "Signing up..." : "Sign Up"}
           </button>
         </div>
       </div>
-
-      {/* Bottom Blue Bar */}
-      <div className="admin3-bottom-bar"></div>
     </div>
   );
 }

@@ -40,21 +40,9 @@ function Admin2() {
 
   return (
     <div className="admin2-container">
-      {/* Top Blue Bar */}
-      <div className="admin2-top-bar">
-        <div className="admin2-menu-icon">
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-          <div className="menu-line"></div>
-        </div>
-      </div>
-
-      {/* Heading */}
-      <h2 className="admin2-page-heading">Sign in to Admin Account</h2>
-
       {/* Login Form */}
       <div className="admin2-form-container">
-        <h3 className="admin2-form-heading">Sign in</h3>
+        <h3 className="admin2-form-heading">Admin Sign In</h3>
 
         <div className="admin2-form-group">
           <label className="admin2-label">Email:</label>
@@ -86,7 +74,7 @@ function Admin2() {
             className="admin2-link"
             onClick={() => navigate('/admin/signup')}
           >
-            Signup
+            Sign up here
           </span>
         </p>
 
@@ -102,13 +90,10 @@ function Admin2() {
             onClick={handleLogin}
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Log-in"}
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </div>
       </div>
-
-      {/* Bottom Blue Bar */}
-      <div className="admin2-bottom-bar"></div>
     </div>
   );
 }
