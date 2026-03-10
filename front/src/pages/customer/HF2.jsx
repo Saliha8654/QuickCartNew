@@ -413,7 +413,16 @@ function HF2() {
 
   return (
     <div className="hf2">
-      {/* Skin Color Bar with Back Arrow and Heading */}
+      {/* Modern Header with Logo */}
+      <div className="hf2-navbar">
+        <div className="navbar-content">
+          <div className="navbar-title">
+            <h1 className="navbar-heading">quickcart</h1>
+          </div>
+        </div>
+      </div>
+
+      {/* Header Bar */}
       <div className="hf2-header-bar">
         <button className="hf2-back-btn" onClick={handleBack}>
           <IoMdArrowBack />
@@ -426,10 +435,11 @@ function HF2() {
         {/* Left Side - Camera Detection */}
         <div className="hf2-left-section">
           <div className="hf2-camera-box">
-            <div className="hf2-camera-header">
-              <p className="camera-text">
-                Camera Detection Area {isDetecting && "(Detecting...)"}
-              </p>
+            <div className="camera-box-header">
+              <div className="camera-badge">
+                <span className="badge-dot"></span>
+                <p className="camera-label">Live Camera Scan</p>
+              </div>
               <div className="camera-controls">
                 <button
                   type="button"
@@ -438,7 +448,6 @@ function HF2() {
                 >
                   {isCameraOn ? 'Camera ON' : 'Camera OFF'}
                 </button>
-                {/* Remove the detection toggle button */}
               </div>
             </div>
             <div className="camera-placeholder">
@@ -450,7 +459,7 @@ function HF2() {
                   width: '100%',
                   height: '100%',
                   objectFit: 'cover',
-                  borderRadius: '8px'
+                  borderRadius: '12px'
                 }}
               />
               <canvas 
@@ -461,30 +470,38 @@ function HF2() {
                   left: 0,
                   width: '100%',
                   height: '100%',
-                  borderRadius: '8px'
+                  borderRadius: '12px'
                 }} 
               />
+            </div>
+            <div className="camera-status">
+              <p>{isDetecting ? '🔍 Detecting...' : '✓ Ready'}</p>
             </div>
           </div>
 
           <div className="hf2-manual-search">
             <p className="manual-search-text">
-              If you miss anything or unable to scan... search manually
+              Didn't find what you're looking for?
             </p>
             <button className="search-btn" onClick={handleSearchManually}>
-              Search
+              Search Manually
             </button>
           </div>
         </div>
 
         {/* Right Side - Detected Items List */}
         <div className="hf2-right-section">
-          <h3 className="detected-items-title">Detected Items</h3>
+          <div className="detected-items-header">
+            <h3 className="detected-items-title">🛒 Detected Items</h3>
+            <span className="items-count">{detectedItems.length} item{detectedItems.length !== 1 ? 's' : ''}</span>
+          </div>
           <div className="detected-items-list">
             {detectedItems.length === 0 ? (
-              <p style={{ textAlign: 'center', color: '#888', marginTop: '20px' }}>
-                No items detected yet. Place items in camera view.
-              </p>
+              <div className="empty-state">
+                <p className="empty-state-icon">📦</p>
+                <p className="empty-state-text">No items detected yet</p>
+                <p className="empty-state-hint">Place items in camera view</p>
+              </div>
             ) : (
               detectedItems.map((item) => (
                 <div key={item.id} className="detected-item">
@@ -495,24 +512,26 @@ function HF2() {
                       <p className="item-price">Rs {item.price.toFixed(2)}</p>
                     </div>
                   </div>
-                  <div className="item-quantity">
-                    <button
-                      className="quantity-btn"
-                      onClick={() => updateQuantity(item.id, -1)}
-                    >
-                      <FiMinus />
-                    </button>
-                    <span className="quantity-value">{item.quantity}</span>
-                    <button
-                      className="quantity-btn"
-                      onClick={() => updateQuantity(item.id, 1)}
-                    >
-                      <FiPlus />
-                    </button>
+                  <div className="item-actions">
+                    <div className="item-quantity">
+                      <button
+                        className="quantity-btn"
+                        onClick={() => updateQuantity(item.id, -1)}
+                      >
+                        <FiMinus />
+                      </button>
+                      <span className="quantity-value">{item.quantity}</span>
+                      <button
+                        className="quantity-btn"
+                        onClick={() => updateQuantity(item.id, 1)}
+                      >
+                        <FiPlus />
+                      </button>
+                    </div>
+                    <p className="item-total">
+                      Rs {(item.price * item.quantity).toFixed(2)}
+                    </p>
                   </div>
-                  <p className="item-total">
-                    Rs {(item.price * item.quantity).toFixed(2)}
-                  </p>
                 </div>
               ))
             )}
@@ -520,8 +539,10 @@ function HF2() {
 
           {/* Total Price */}
           <div className="total-section">
-            <h3 className="total-label">Total:</h3>
-            <h3 className="total-price">Rs {getTotalPrice()}</h3>
+            <div className="total-row">
+              <h3 className="total-label">Total:</h3>
+              <h3 className="total-price">Rs {getTotalPrice()}</h3>
+            </div>
           </div>
 
           {/* Proceed to Checkout Button */}
