@@ -106,6 +106,15 @@
   gap: 12px;
 }
 
+/* Hide the section-level header to keep only the top nav visible */
+.hf4 .items-header {
+  display: none;
+}
+
+.hf4-left-section {
+  padding-top: 6px;
+}
+
 .section-title {
   color: #0C2E4D;
   font-size: 28px;
