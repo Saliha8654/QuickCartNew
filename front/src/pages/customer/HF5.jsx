@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./HF5.css";
-import { IoMdArrowBack } from "react-icons/io";
 import { MdCheckCircle, MdWarning, MdRefresh } from "react-icons/md";
 import { HiOutlineScale } from "react-icons/hi";
 import { FaShoppingCart } from "react-icons/fa";
@@ -86,10 +85,6 @@ function HF5() {
     }
   };
 
-  const handleBack = () => {
-    navigate("/product-confirmation");
-  };
-
   const handleRescanItems = () => {
     navigate("/detect-items");
   };
@@ -100,26 +95,6 @@ function HF5() {
 
   return (
     <div className="hf5">
-      {/* Navigation Bar */}
-      <div className="hf5-navbar">
-        <div className="navbar-content">
-          <button className="navbar-back-btn" onClick={handleBack}>
-            <IoMdArrowBack />
-          </button>
-          <h1 className="navbar-title">quickcart</h1>
-          <div style={{ width: '40px' }}></div>
-        </div>
-      </div>
-
-      {/* Header Section */}
-      <div className="hf5-header">
-        <div className="header-icon">
-          <HiOutlineScale />
-        </div>
-        <h2 className="hf5-page-title">Weight Verification</h2>
-        <p className="hf5-page-subtitle">Verify your items match the expected weight</p>
-      </div>
-
       {/* Main Content */}
       <div className="hf5-content">
         <div className="verification-container">

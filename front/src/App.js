@@ -38,8 +38,8 @@ function App() {
         {/* HF4 - Product Confirmation Screen (first bar only, back arrow on top nav) */}
         <Route path="/product-confirmation" element={<><TopNav showBack backPath="/detect-items" title="quickcart" /><HF4 /></>} />
         
-        {/* HF5 - Weight Verification Screen (has its own top bar) */}
-        <Route path="/weight-verification" element={<><TopNav /><HF5 /></>} />
+        {/* HF5 - Weight Verification Screen (first bar only, back arrow on top nav) */}
+        <Route path="/weight-verification" element={<><TopNav showBack backPath="/product-confirmation" title="quickcart" /><HF5 /></>} />
         
         {/* HF6 - Payment Selection Screen (has its own top bar) */}
         <Route path="/payment-selection" element={<><TopNav /><HF6 /></>} />
