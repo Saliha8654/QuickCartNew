@@ -2,18 +2,22 @@
 import React, { useState } from "react";
 import "./TopNav.css";
 import { FiMenu } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdArrowBack } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = "http://localhost:5000/api";
 
-function TopNav({ showLogo = false, logo = null }) {
+function TopNav({ showLogo = false, logo = null, showBack = false, backPath = "/", title = "" }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleBack = () => {
+    navigate(backPath);
   };
 
   const handleFindItems = () => {
@@ -47,11 +51,20 @@ function TopNav({ showLogo = false, logo = null }) {
   return (
     <>
       <div className="topnav">
-        {showLogo && logo && (
+        {showBack ? (
+          <button className="topnav-back-btn" onClick={handleBack}>
+            <IoMdArrowBack />
+          </button>
+        ) : showLogo && logo ? (
           <div className="topnav-logo">
             <img src={logo} alt="Logo" />
           </div>
+        ) : (
+          <div className="topnav-spacer" />
         )}
+
+        {title && <div className="topnav-title">{title}</div>}
+
         <button className="menu-btn" onClick={toggleMenu}>
           <FiMenu className="menu-icon" />
         </button>

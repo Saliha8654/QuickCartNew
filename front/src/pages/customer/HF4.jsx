@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HF4.css";
 import { FiPlus, FiMinus } from "react-icons/fi";
-import { IoMdArrowBack } from "react-icons/io";
 import { MdDelete, MdCheckCircle } from "react-icons/md";
 import { FaShoppingCart } from "react-icons/fa";
 import axios from "axios";
@@ -93,10 +92,6 @@ function HF4() {
     return (parseFloat(getSubtotal()) + parseFloat(getTax())).toFixed(2);
   };
 
-  const handleBack = () => {
-    navigate("/detect-items");
-  };
-
   const handleWeightVerification = () => {
     navigate("/weight-verification", { state: { items } });
   };
@@ -116,17 +111,7 @@ function HF4() {
   return (
     <div className="hf4">
       {/* Navigation Bar */}
-      <div className="hf4-navbar">
-        <div className="navbar-content">
-          <button className="navbar-back-btn" onClick={handleBack}>
-            <IoMdArrowBack />
-          </button>
-          <h1 className="navbar-title">quickcart</h1>
-          <div style={{ width: '40px' }}></div>
-        </div>
-      </div>
-
-      {/* (Removed secondary header) */}
+      {/* TopNav handles header and back navigation; remove redundant second bar */}
 
       {/* Main Content */}
       <div className="hf4-content">

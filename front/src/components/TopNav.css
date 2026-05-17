@@ -15,6 +15,33 @@
   width: auto;
 }
 
+.topnav-spacer {
+  width: 40px;
+}
+
+.topnav-back-btn {
+  background: none;
+  border: none;
+  color: #ffefc8;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.topnav-title {
+  flex: 1;
+  text-align: center;
+  color: #ffefc8;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: lowercase;
+}
+
 .menu-btn {
   background: none;
   border: none;

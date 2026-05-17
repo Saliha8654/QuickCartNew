@@ -35,8 +35,8 @@ function App() {
         {/* HF3 - Find Products Screen (has its own top bar) */}
         <Route path="/find-products" element={<><TopNav /><HF3 /></>} />
         
-        {/* HF4 - Product Confirmation Screen (has its own top bar) */}
-        <Route path="/product-confirmation" element={<><TopNav /><HF4 /></>} />
+        {/* HF4 - Product Confirmation Screen (first bar only, back arrow on top nav) */}
+        <Route path="/product-confirmation" element={<><TopNav showBack backPath="/detect-items" title="quickcart" /><HF4 /></>} />
         
         {/* HF5 - Weight Verification Screen (has its own top bar) */}
         <Route path="/weight-verification" element={<><TopNav /><HF5 /></>} />
