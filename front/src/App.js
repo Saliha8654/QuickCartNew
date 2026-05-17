@@ -44,8 +44,8 @@ function App() {
         {/* HF6 - Payment Selection Screen (first bar only, back arrow on top nav) */}
         <Route path="/payment-selection" element={<><TopNav showBack backPath="/weight-verification" title="quickcart" /><HF6 /></>} />
         
-        {/* Stripe Payment Screen */}
-        <Route path="/stripe-payment" element={<><TopNav /><StripePayment /></>} />
+        {/* Stripe Payment Screen (first bar only, back arrow on top nav) */}
+        <Route path="/stripe-payment" element={<><TopNav showBack backPath="/payment-selection" title="quickcart" /><StripePayment /></>} />
         
         {/* HF7 - Receipt Screen (has its own top bar) */}
         <Route path="/receipt" element={<><TopNav /><HF7 /></>} />

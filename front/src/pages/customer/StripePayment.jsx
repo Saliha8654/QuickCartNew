@@ -9,7 +9,6 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import "./StripePayment.css";
-import { IoMdArrowBack } from "react-icons/io";
 import { MdCheckCircle, MdLock, MdError } from "react-icons/md";
 import { FaCreditCard } from "react-icons/fa";
 import axios from "axios";
@@ -178,10 +177,6 @@ function StripePayment() {
     }
   };
 
-  const handleBack = () => {
-    navigate("/payment-selection");
-  };
-
   const handleProceed = () => {
     navigate("/receipt", { state: { items, total, paymentMethod: "Credit Card" } });
   };
@@ -194,16 +189,6 @@ function StripePayment() {
   if (paymentStatus === "success") {
     return (
       <div className="stripe-payment-success">
-        <div className="success-navbar">
-          <div className="navbar-content">
-            <button className="navbar-back-btn" onClick={handleBack}>
-              <IoMdArrowBack />
-            </button>
-            <h1 className="navbar-title">quickcart</h1>
-            <div style={{ width: '40px' }}></div>
-          </div>
-        </div>
-        
         <div className="success-content">
           <div className="success-card">
             <div className="success-icon-large">
@@ -234,17 +219,6 @@ function StripePayment() {
 
   return (
     <div className="stripe-payment">
-      {/* Navigation Bar */}
-      <div className="stripe-navbar">
-        <div className="navbar-content">
-          <button className="navbar-back-btn" onClick={handleBack}>
-            <IoMdArrowBack />
-          </button>
-          <h1 className="navbar-title">quickcart</h1>
-          <div style={{ width: '40px' }}></div>
-        </div>
-      </div>
-
       {/* Header Section */}
       <div className="stripe-page-header">
         <div className="header-icon">
