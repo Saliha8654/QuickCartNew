@@ -7,14 +7,16 @@ def update_weights():
     # Product name to weight mapping (in grams)
     product_weights = {
         "Tapal Danedar": 85.0,
-        "Lifebuoy": 123.0,
-        "Colgate": 20.0,
-        "Lipton Yellow Label": 94.0,
+        "Lifebuoy": 4.0,
+        "Colgate": 1.0,
+        "Lipton Yellow Label": 4.4,
         "Chocolate Chip Cookies": 36.0,
-        "Safeguard Soap": 122.0,
+        "Safeguard Soap": 3.0,
         "Oreo": 38.6,
         "Kurkure": 34.0,
     }
+
+
     
     print("Updating product weights in database...")
     print("=" * 60)

@@ -73,7 +73,7 @@ def predict_image(file_like, conf=0.5, iou=0.4):
         # Run prediction with improved parameters for multiple object detection
         # Lower confidence threshold and adjust NMS threshold for better multi-object detection
         # Using 15% confidence threshold for MAXIMUM detection sensitivity
-        results = model.predict(source=image_array, conf=0.15, iou=0.5, verbose=False)
+        results = model.predict(source=image_array, conf=0.15, iou=0.5,  imgsz=320, verbose=False)
         detections = []
 
         if results and len(results) > 0 and hasattr(results[0], 'boxes') and results[0].boxes is not None:

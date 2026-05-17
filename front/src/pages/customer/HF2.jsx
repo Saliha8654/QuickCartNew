@@ -154,8 +154,8 @@ function HF2() {
         return;
       }
       
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
+      canvas.width = 640;
+      canvas.height = 480;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(video, 0, 0);
       
@@ -173,7 +173,7 @@ function HF2() {
         try {
           const response = await axios.post(`${API_URL}/detect`, formData, {
             headers: { 'Content-Type': 'multipart/form-data' },
-            timeout: 5000 // 5 second timeout
+            timeout: 30000 // 5 second timeout
           });
           
           if (response.data.detections && response.data.detections.length > 0) {
@@ -227,7 +227,7 @@ function HF2() {
         }
         
         setIsDetecting(false);
-      }, 'image/jpeg', 0.8); // JPEG quality set to 0.8 for better performance
+      }, 'image/jpeg', 0.5); // JPEG quality set to 0.8 for better performance
       
     } catch (error) {
       console.error("Detection error:", error);

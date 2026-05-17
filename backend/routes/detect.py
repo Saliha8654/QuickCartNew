@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify, Response
 import cv2
 import numpy as np
 import json
-
+import time
 # ---------------------------------------------------------------------------
 # Robust imports for detection model and database
 # ---------------------------------------------------------------------------
@@ -57,7 +57,7 @@ def detect():
     try:
         if 'image' not in request.files:
             return jsonify({"error":"image required"}), 400
-        
+        start_time = time.time()
         f = request.files['image']
         if f.filename == '':
             return jsonify({"error":"no file selected"}), 400
@@ -77,7 +77,7 @@ def detect():
 
         # Run object detection with lowered confidence for MAXIMUM sensitivity
         dets = predict_image(frame, conf=0.15)
-        
+        print(f"⏱️ Detection took: {time.time() - start_time:.2f} seconds")
         print(f"[DEBUG] Detections found: {len(dets)}")
         if len(dets) > 0:
             for i, d in enumerate(dets[:3]):
@@ -91,9 +91,9 @@ def detect():
             print("    - Check last_detection_frame.jpg to see what camera sees")
 
         # Run multi-barcode detection on the same frame
-        barcode_results = detect_barcodes(frame)
+       # barcode_results = detect_barcodes(frame)
         # Attach nearby barcodes to detections
-        dets = match_barcodes_to_detections(barcode_results, dets)
+       # dets = match_barcodes_to_detections(barcode_results, dets)
 
         db = SessionLocal()
         out = []

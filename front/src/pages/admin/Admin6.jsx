@@ -37,6 +37,8 @@ function Admin6() {
     } catch (err) {
       console.error("Failed to fetch transactions:", err);
       if (err.response?.status === 401) {
+        localStorage.removeItem("adminToken");
+        localStorage.removeItem("adminData");
         navigate("/admin/login");
       }
       setLoading(false);

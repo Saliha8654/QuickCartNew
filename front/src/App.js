@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import HF0 from "./pages/customer/HF0";
 import HF1 from "./pages/customer/HF1";
 import HF2 from "./pages/customer/HF2";
@@ -62,12 +62,15 @@ function App() {
         
         {/* Admin4 - Admin Dashboard (Metrics) */}
         <Route path="/admin/dashboard" element={<Admin4 />} />
+        <Route path="/admin/4" element={<Navigate to="/admin/dashboard" replace />} />
         
         {/* Admin5 - Product Inventory */}
         <Route path="/admin/inventory" element={<Admin5 />} />
+        <Route path="/admin/5" element={<Navigate to="/admin/inventory" replace />} />
         
         {/* Admin6 - Transaction History */}
         <Route path="/admin/transactions" element={<Admin6 />} />
+        <Route path="/admin/6" element={<Navigate to="/admin/transactions" replace />} />
         
         {/* AdminAssistance - Help & Support */}
         <Route path="/admin/assistance" element={<AdminAssistance />} />

@@ -1,0 +1,235 @@
+.admin5-container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-bottom: 80px;
+}
+
+.admin5-top-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #003d5c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.admin5-logo {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+}
+
+.admin5-menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admin5-yellow-bar {
+  width: 100%;
+  background-color: #ffefc8;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin5-back-arrow {
+  font-size: 28px;
+  color: #003d5c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.admin5-yellow-heading {
+  color: #003d5c;
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.admin5-welcome {
+  text-align: center;
+  font-size: 26px;
+  color: #000;
+  margin: 30px 0;
+  font-weight: 600;
+}
+
+.admin5-loading {
+  text-align: center;
+  font-size: 18px;
+  margin: 40px 0;
+}
+
+.admin5-table-container {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 0 20px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.admin5-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin5-table th {
+  background-color: #003d5c;
+  color: #ffefc8;
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.admin5-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin5-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin5-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.admin5-edit-btn, .admin5-delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.admin5-edit-btn {
+  background-color: #003d5c;
+  color: #ffefc8;
+}
+
+.admin5-delete-btn {
+  background-color: #ff6b6b;
+  color: #fff;
+}
+
+.admin5-edit-btn:hover, .admin5-delete-btn:hover {
+  transform: scale(1.05);
+}
+
+.admin5-add-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.admin5-add-btn {
+  background-color: #003d5c;
+  color: #ffefc8;
+  border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin5-add-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.admin5-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.admin5-modal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.admin5-modal h3 {
+  color: #003d5c;
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.admin5-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin5-form input {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.admin5-form input:focus {
+  outline: none;
+  border-color: #003d5c;
+}
+
+.admin5-form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.admin5-form-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.admin5-form-buttons button:first-child {
+  background-color: #ddd;
+  color: #333;
+}
+
+.admin5-form-buttons button:last-child {
+  background-color: #003d5c;
+  color: #ffefc8;
+}
+
+.admin5-form-buttons button:hover {
+  transform: scale(1.05);
+}
+
+.admin5-bottom-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #003d5c;
+  position: fixed;
+  bottom: 0;
+}

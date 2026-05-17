@@ -202,14 +202,27 @@ def verify_cart_weight():
         # Get latest weight from monitor
         actual_weight = read_weight_from_sensor()
         
-        # Verification with tolerance (10% by default as per frontend logic)
+        # Verification rule: allow up to ±5g absolute difference by default.
+        # (Also supports percentage tolerance if provided by caller.)
         data = request.get_json() or {}
-        tolerance = data.get("tolerance", 0.1)  # 10% tolerance
-        
-        lower_bound = expected_total_weight * (1 - tolerance)
-        upper_bound = expected_total_weight * (1 + tolerance)
-        
-        is_verified = lower_bound <= actual_weight <= upper_bound
+        abs_tolerance_g = float(data.get("abs_tolerance_g", 10.0))  # default ±10g
+
+
+
+
+        tolerance = float(data.get("tolerance", 0.1))  # default ±10% if abs_tolerance not enough
+
+        lower_bound = expected_total_weight - abs_tolerance_g
+        upper_bound = expected_total_weight + abs_tolerance_g
+
+        within_abs = lower_bound <= actual_weight <= upper_bound
+
+        lower_bound_pct = expected_total_weight * (1 - tolerance)
+        upper_bound_pct = expected_total_weight * (1 + tolerance)
+        within_pct = lower_bound_pct <= actual_weight <= upper_bound_pct
+
+        is_verified = within_abs or within_pct
+
         
         print(f"📊 Verification: Expected={expected_total_weight}g, Actual={actual_weight}g, Matched={is_verified}")
         

@@ -1,0 +1,204 @@
+.admin4-container {
+  min-height: 100vh;
+  background-color: #ffffff;
+  padding-bottom: 80px;
+}
+
+.admin4-top-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #003d5c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.admin4-logo {
+  display: flex;
+  gap: 5px;
+  align-items: baseline;
+}
+
+.logo-small {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffefc8;
+  margin: 0;
+}
+
+.logo-small-cart {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffefc8;
+  margin: 0;
+}
+
+.admin4-menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.admin4-yellow-bar {
+  width: 100%;
+  background-color: #ffefc8;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.admin4-back-arrow {
+  font-size: 28px;
+  color: #003d5c;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.admin4-yellow-heading {
+  color: #003d5c;
+  font-size: 22px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.admin4-welcome {
+  text-align: center;
+  font-size: 26px;
+  color: #000;
+  margin: 30px 0;
+  font-weight: 600;
+}
+
+.admin4-loading {
+  text-align: center;
+  font-size: 18px;
+  margin: 40px 0;
+}
+
+.admin4-metrics-table {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin4-table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #003d5c;
+  color: #ffefc8;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.admin4-table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin4-table-row:last-child {
+  border-bottom: none;
+}
+
+.admin4-table-cell {
+  padding: 15px 20px;
+  border-right: 1px solid #ddd;
+}
+
+.admin4-table-cell:last-child {
+  border-right: none;
+}
+
+.admin4-charts {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.admin4-chart {
+  text-align: center;
+}
+
+.admin4-chart h4 {
+  font-size: 20px;
+  color: #003d5c;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.admin4-pie-chart {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.pie-slice {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pie-center {
+  width: 120px;
+  height: 120px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #003d5c;
+}
+
+.admin4-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 200px;
+  gap: 10px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bar-container {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+}
+
+.bar {
+  width: 100%;
+  min-height: 10px;
+  border-radius: 5px 5px 0 0;
+  transition: all 0.3s ease;
+}
+
+.bar:hover {
+  opacity: 0.8;
+}
+
+.admin4-bottom-bar {
+  width: 100%;
+  height: 60px;
+  background-color: #003d5c;
+  position: fixed;
+  bottom: 0;
+}
