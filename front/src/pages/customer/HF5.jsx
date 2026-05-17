@@ -95,6 +95,15 @@ function HF5() {
 
   return (
     <div className="hf5">
+      {/* Page Header Section */}
+      <div className="hf5-header">
+        <div className="header-icon">
+          <HiOutlineScale />
+        </div>
+        <h2 className="hf5-page-title">Weight Verification</h2>
+        <p className="hf5-page-subtitle">Verify your items match the expected weight</p>
+      </div>
+
       {/* Main Content */}
       <div className="hf5-content">
         <div className="verification-container">
