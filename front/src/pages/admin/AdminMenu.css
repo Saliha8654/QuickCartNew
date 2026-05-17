@@ -51,3 +51,15 @@
 .admin-menu-logout span {
   font-size: 22px;
 }
+
+/* Menu icon lines (hamburger) used in admin top bars */
+.menu-line {
+  width: 28px;
+  height: 3px;
+  background-color: #ffefc8;
+  border-radius: 2px;
+}
+
+.admin4-menu-icon, .admin5-menu-icon, .admin6-menu-icon {
+  padding: 8px;
+}
