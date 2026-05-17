@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./HF6.css";
-import { IoMdArrowBack } from "react-icons/io";
 import { FaCreditCard, FaMoneyBillWave, FaApple, FaGoogle } from "react-icons/fa";
 import { MdLock, MdVerifiedUser, MdShield } from "react-icons/md";
 import axios from "axios";
@@ -69,17 +68,6 @@ function HF6() {
 
   return (
     <div className="hf6">
-      {/* Navigation Bar */}
-      <div className="hf6-navbar">
-        <div className="navbar-content">
-          <button className="navbar-back-btn" onClick={handleBack}>
-            <IoMdArrowBack />
-          </button>
-          <h1 className="navbar-title">quickcart</h1>
-          <div style={{ width: '40px' }}></div>
-        </div>
-      </div>
-
       {/* Header Section */}
       <div className="hf6-header">
         <div className="header-icon">
