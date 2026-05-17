@@ -126,11 +126,7 @@ function HF4() {
         </div>
       </div>
 
-      {/* Header */}
-      <div className="hf4-header">
-        <h2 className="hf4-page-title">Review Your Order</h2>
-        <p className="hf4-page-subtitle">Verify items and proceed with checkout</p>
-      </div>
+      {/* (Removed secondary header) */}
 
       {/* Main Content */}
       <div className="hf4-content">
