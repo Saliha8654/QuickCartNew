@@ -110,8 +110,11 @@ function HF4() {
 
   return (
     <div className="hf4">
-      {/* Navigation Bar */}
-      {/* TopNav handles header and back navigation; remove redundant second bar */}
+      {/* Page Header */}
+      <div className="hf4-header">
+        <h2 className="hf4-page-title">Review Your Order</h2>
+        <p className="hf4-page-subtitle">Verify items and proceed with checkout</p>
+      </div>
 
       {/* Main Content */}
       <div className="hf4-content">
