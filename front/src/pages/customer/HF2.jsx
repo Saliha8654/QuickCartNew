@@ -413,15 +413,6 @@ function HF2() {
 
   return (
     <div className="hf2">
-      {/* Modern Header with Logo */}
-      <div className="hf2-navbar">
-        <div className="navbar-content">
-          <div className="navbar-title">
-            <h1 className="navbar-heading">quickcart</h1>
-          </div>
-        </div>
-      </div>
-
       {/* Header Bar */}
       <div className="hf2-header-bar">
         <button className="hf2-back-btn" onClick={handleBack}>
